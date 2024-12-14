@@ -37,7 +37,7 @@ const (
 )
 
 func init() {
-	logrus.SetFormatter(&logrus.TextFormatter{})
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	Env = os.Getenv("ENV")
 	if Env == "" {
@@ -58,7 +58,9 @@ func init() {
 
 func loadEnv() {
 	SmtpAddress = os.Getenv(SMTP_ADDRESS)
+	logrus.Info("SmtpAddress = " + SmtpAddress)
 	SmtpDomain = os.Getenv(SMTP_DOMAIN)
+	logrus.Info("SmtpDomain = " + SmtpDomain)
 
 	AmqpUrl = os.Getenv(AMQP_URL)
 	AmqpQueueName = os.Getenv(AMQP_QUEUE)

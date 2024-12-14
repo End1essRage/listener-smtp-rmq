@@ -26,7 +26,7 @@ func failOnError(err error, msg string) {
 	}
 }
 
-func (c *Client) Send(msg string) {
+func (c *Client) SendSting(msg string) {
 	conn, err := amqp.DialConfig(c.Url, c.Config)
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
@@ -37,7 +37,7 @@ func (c *Client) Send(msg string) {
 
 	q, err := ch.QueueDeclare(
 		c.QueueName, // name
-		false,       // durable
+		true,        // durable
 		false,       // delete when unused
 		false,       // exclusive
 		false,       // no-wait

@@ -76,7 +76,7 @@ func (s *Session) Reset() {}
 func (s *Session) Logout() error {
 	//format message
 	msg := "message is: " + s.Body + " FOR : " + s.Recepents[0]
-	s.RmqClient.Send(msg)
+	s.RmqClient.SendSting(msg)
 	return nil
 }
 
